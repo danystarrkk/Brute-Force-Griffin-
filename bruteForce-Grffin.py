@@ -31,12 +31,14 @@ cookies = {"PHPSESSID":args.cookie}
 # suppress warnings
 ort.set_default_logger_severity(3)
 
+# Force exit CTL + C
 def def_handler(sig, frame):
     print('\n\n[!] Saliendo ......\n\n')
     sys.exit(1)
 
 signal.signal(signal.SIGINT, def_handler)
 
+# To solved captcha
 def getCaptcha():
 
     url = mainurl + "/family/captcha.php"
@@ -45,11 +47,13 @@ def getCaptcha():
     ocr = ddddocr.DdddOcr()
     return ocr.classification(img_bytes.getvalue()).strip().upper()
 
+# To solved the blockage issue
 def resetLogin():
 
     url = mainurl + "/family/index.php?reset=1"
     response = requests.get(url=url, cookies=cookies, headers=headers)
 
+# Message Handling process
 def messageTra(response):
 
     soup = BeautifulSoup(response.text, "html.parser")
@@ -57,6 +61,7 @@ def messageTra(response):
     message = message.text.strip() if message else ''
     return message
 
+# Sen Request
 def requestWeb(password):
     captcha = getCaptcha()
     values = {'username': args.username,'password': password,'captcha': captcha}
