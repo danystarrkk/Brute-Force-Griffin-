@@ -12,7 +12,7 @@ Los parámetros son:
 Ejemplo:
 
 ```bash
-python3 Bruteforce.py -w <diccionario> -u http://10.10.1.15 -U <usario>
+python3 Bruteforce.py -w <diccionario> -u <http://10.10.10.1> -U <user> -c <cookie>
 ```
 
 Configuración de `ddddocr` en las ultimas versiones vamos a tener un problema y para solucionarlo vamos a tener que modificar el `__init__.py` de la la librería `dddocr` de la siguiente manera:
